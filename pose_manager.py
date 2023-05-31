@@ -89,24 +89,13 @@ def load_dataset(args):
     # 设置随机数种子
     setup_seed(0)
 
-    '''split'''
-    train_size = int(0.95 * len(dataset))
-    test_size = len(dataset) - train_size
-    train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size])
-
-
-    train_dataloader = DataLoader(train_dataset,
+    dataloader = DataLoader(dataset,
                              batch_size=args.batch_size,
                              shuffle=True,
                              num_workers=args.num_workers,
                              pin_memory=True)
 
-    test_dataloader = DataLoader(test_dataset,
-                                  batch_size=args.batch_size,
-                                  shuffle=True,
-                                  num_workers=args.num_workers,
-                                  pin_memory=True)
-    return train_dataloader, test_dataloader
+    return dataloader
 
 
 def save_network(data, folder):

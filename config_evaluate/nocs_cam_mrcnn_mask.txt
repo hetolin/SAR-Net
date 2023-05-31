@@ -1,16 +1,15 @@
 data_type='cam_val'
 data_folder='./data/NOCS/'
 temp_folder='./data/NOCS/template_FPS'
-results_folder='./results/CAMERA/'
+results_folder='./results/NOCS/'
 
 backproj_npts=2048
 detect_type='mask'
 detect_network='mrcnn'
 
 GCN3D_isNeed=True
-Open3D_isNeed=False
 pcd_isSave=False
 
-output_pcd_folder = '../output_pcds/NOCS'
-SARNet_model_path='./checkpoints/pretrained/sarnet/000099.model'
-GCN3D_model_path='./checkpoints/pretrained/seg3d/20210530_5.pth'
+output_pcd_folder = './results/NOCS/output_pcds'
+SARNet_model_path='./checkpoints/NOCS/pretrained/sarnet/000099.model'
+GCN3D_model_path='./checkpoints/NOCS/pretrained/seg3d/20210530_5.pth'

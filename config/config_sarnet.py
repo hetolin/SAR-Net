@@ -59,9 +59,10 @@ class Config_SARNet(object):
     net_dump_name = "sarnet_GPUs" if is_parallel else "sarnet_GPU"
     net_dump_folder = os.path.join(net_dump_root, dataset, net_dump_name)
 
-    net_recover = False
+    # net_recover = False
+    net_recover_epoch = 0
     net_recover_folder = os.path.join(net_dump_folder)
-    net_recover_epoch = 105
+    net_recover = True if net_recover_epoch>0 else False
 
 
 args = Config_SARNet()

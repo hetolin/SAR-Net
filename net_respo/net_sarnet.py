@@ -14,7 +14,8 @@ import os
 import torch as tc
 import torch.nn as nn
 import torch.nn.functional as F
-import lib.utils_files as file_utils
+from lib.utils_files import create_folder
+from lib.utils_pose import save_to_obj_pts
 
 def pc_centralize(pcd):
     '''
@@ -26,13 +27,6 @@ def pc_centralize(pcd):
     pc = pc - centroid
 
     return pc, centroid
-
-def save_to_obj_pts(verts, path):
-    file = open(path, 'w')
-    for v in verts:
-        file.write('v %f %f %f\n' % (v[0], v[1], v[2]))
-
-    file.close()
 
 class PointEncoder(nn.Module):
     def __init__(self):
@@ -335,12 +329,12 @@ class Loss_Func(nn.Module):
 
 
         '''for debug'''
-        debug_folder = './debug'
-        file_utils.create_folder(debug_folder)
-        save_to_obj_pts(mini_gt[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SA_gt.obj'))
-        save_to_obj_pts(obsv_pcd[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_inst.obj'))
-        save_to_obj_pts((pred_SA[0]).cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SA_pred.obj'))
-        save_to_obj_pts(target_SC[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SC_gt.obj'))
-        save_to_obj_pts(pred_SC[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SC_pred.obj'))
+        # debug_folder = './debug'
+        # create_folder(debug_folder)
+        # save_to_obj_pts(mini_gt[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SA_gt.obj'))
+        # save_to_obj_pts(obsv_pcd[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_inst.obj'))
+        # save_to_obj_pts((pred_SA[0]).cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SA_pred.obj'))
+        # save_to_obj_pts(target_SC[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SC_gt.obj'))
+        # save_to_obj_pts(pred_SC[0].cpu().detach().numpy().transpose(), os.path.join(debug_folder, f'{cate_id[0]}_SC_pred.obj'))
 
         return loss, deform_loss, sym_loss, center_loss, size_loss

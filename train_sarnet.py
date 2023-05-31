@@ -14,11 +14,9 @@
 import numpy as np
 import pose_manager
 import lib.utils_files as file_utils
-# import config_sarnet
 
 import os
 from net_respo.net_sarnet import Loss_Func
-# from rich.progress import track
 from rich.progress import Progress, TextColumn, BarColumn, TimeElapsedColumn, TimeRemainingColumn, SpinnerColumn
 from config.config_sarnet import args
 
@@ -54,7 +52,7 @@ def train_model(args):
     # scheduler_steplr = lr_scheduler.StepLR(optimizer, 4, 0.75)
 
     loss_function = Loss_Func()
-    dataloader, _ = pose_manager.load_dataset(args)
+    dataloader = pose_manager.load_dataset(args)
 
     optimizer_zero_grad(optimizer)
     optimizer_step(optimizer)
@@ -145,5 +143,4 @@ def train_model(args):
 
 
 if __name__ == "__main__":
-    # args = config_sarnet.Config_SARNet()
     train_model(args)

@@ -20,8 +20,7 @@ def read_json_file(file_path):
         return json.load(stream)
 
 if __name__ == '__main__':
-    data_path = './data/NOCS/camera_train/'
-    # data_path = '/var/lib/docker/robotics_group/linhaitao/lht/tmp_data/camera_train'
+    data_path = './data/NOCS/camera_train_processed/'
 
     category_list = os.listdir(data_path)
     train_list = {}
@@ -29,6 +28,7 @@ if __name__ == '__main__':
     categories = ['bottle', 'bowl', 'camera', 'can', 'laptop', 'mug']
 
     data = []
+    instance_num=0
     for category in category_list:
         instance_list = os.listdir(os.path.join(data_path, category))
         print(category, len(instance_list))
@@ -38,26 +38,19 @@ if __name__ == '__main__':
             # instance_absolute_path = os.path.join(pointcloud_absolute_path, category, instance, 'pointclouds')
             instance_absolute_path = os.path.join(pointcloud_absolute_path, category, instance)
             for mfile in os.listdir(instance_absolute_path):
-                # if "obsv.obj" in mfile:
-                #     obsv_pcd = os.path.join(instance_absolute_path, mfile)
-                #     target_SA = obsv_pcd.replace('obsv.obj', 'SA.obj')
-                #     target_SC = obsv_pcd.replace('obsv.obj', 'SC.obj')
-                #     rot = obsv_pcd.replace('obsv.obj', 'rot.txt')
-                #     target_sOC = obsv_pcd.replace('obsv.obj', 'sOC.txt')
-                #     target_OS = obsv_pcd.replace('obsv.obj', 'OS.txt')
-                #     cate_id = [idx for idx in range(len(categories)) if categories[idx] == category]
-                #     data.append((obsv_pcd, target_SA, target_SC, target_sOC, target_OS, rot, cate_id[0]))
-
-                if "x.obj" in mfile:
-                    x = os.path.join(instance_absolute_path, mfile)
-                    z = x.replace('x.obj', 'z_36.obj')
-                    sym = x.replace('x.obj', 's.obj')
-                    rot = x.replace('x.obj', 'rot.txt')
-                    center = x.replace('x.obj', 'center.txt')
-                    size = x.replace('x.obj', 'size.txt')
+                if "obsv.obj" in mfile:
+                    obsv_pcd = os.path.join(instance_absolute_path, mfile)
+                    target_SA = obsv_pcd.replace('obsv.obj', 'SA.obj')
+                    target_SC = obsv_pcd.replace('obsv.obj', 'SC.obj')
+                    rot = obsv_pcd.replace('obsv.obj', 'rot.txt')
+                    target_sOC = obsv_pcd.replace('obsv.obj', 'sOC.txt')
+                    target_OS = obsv_pcd.replace('obsv.obj', 'OS.txt')
                     cate_id = [idx for idx in range(len(categories)) if categories[idx] == category]
-                    data.append((x, z, sym, center, size, rot, cate_id[0]))
+                    data.append((obsv_pcd, target_SA, target_SC, target_sOC, target_OS, rot, cate_id[0]))
 
+                    instance_num += 1
+
+    print('total instance number={}'.format(instance_num)) #623143
     random.seed(0)
     random.shuffle(data)
     train_list = data

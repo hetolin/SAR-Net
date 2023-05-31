@@ -34,14 +34,17 @@ provided by [NOCS](https://github.com/hughw19/NOCS_CVPR2019).
 * Download [segmentation results](https://drive.google.com/file/d/1RwAbFWw2ITX9mXzLUEBjPy_g-MNdyHET/view) 
 provided by [DualPoseNet](https://github.com/Gorilla-Lab-SCUT/DualPoseNet). 
 
+
 Unzip and organize these files in `./data/NOCS` and `./results/NOCS` as follows:
 ```
 data
 └── NOCS
     ├── CAMERA
-    │   └── val
+    │   ├── val 
+    │   └── val_list.txt
     ├── Real
-    │   └── test
+    │   ├── test 
+    │   └── test_list.txt
     ├── gts
     │   ├── cam_val
     │   └── real_test
@@ -51,6 +54,8 @@ data
 results
 └── NOCS
     └── mrcnn_mask_results
+        ├── cam_val
+        └── real_test
 ```
 
 ```
@@ -81,7 +86,9 @@ python train_sarnet.py
 ```
 python evaluate.py --config ./config_evaluate/nocs_real_mrcnn_mask.txt
 ```
-
+We also provide the [results](https://drive.google.com/drive/folders/1dzfvO-HePuOpS6FlCTO0pn1nhTFTmlmW?usp=sharing) 
+reported in our paper for comparison.
+ 
 ## Citation
 If you find our work helpful, please consider citing:
 ```
