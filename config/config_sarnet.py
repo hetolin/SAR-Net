@@ -20,8 +20,8 @@ import pickle
 #batch_size[32*16]
 class Config_SARNet(object):
     # assign GPU
-    # gpu_id = '0,1,2,3'
-    gpu_id = '4'
+    gpu_id = '0' # (recommend)
+    # gpu_id = '1,2,3,4'
 
     device_id = []
     cuda = []

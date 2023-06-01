@@ -20,6 +20,9 @@ For more results and robotic demos, please refer to our [Webpage](https://hetoli
 
 ## Installation
 ```
+conda create -n sarnet python=3.6
+conda activate sarnet
+
 pip install -r requirements.txt
 ```
 
@@ -73,8 +76,8 @@ Also thanks [Peng et al.](https://github.com/swords123/SSC-6D/blob/bb0dcd5e5b789
 ```
 modified the ${gpu_id} in config_sarnet.py
 
-# using single GPU
-e.g. gpu_id = '0'
+# using single GPU (recommend)
+e.g. gpu_id = '0' 
 
 # using multiple GPUs
 e.g. gpu_id = '0,1,2,3'
