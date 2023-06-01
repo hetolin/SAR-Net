@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 
 ## Prepare Dataset
-* Download [camera_train_processed]() that we have preprocessed.
+* Download [camera_train_processed](https://drive.google.com/file/d/1DzqX5OQIOo44viQepPXZfWUXmb1WLZhc/view?usp=share_link) that we have preprocessed.
 * Download [camera_val](http://download.cs.stanford.edu/orion/nocs/camera_val25K.zip),
  [real_test](http://download.cs.stanford.edu/orion/nocs/real_test.zip),
 [ground-truth annotations](http://download.cs.stanford.edu/orion/nocs/gts.zip)
