@@ -6,4 +6,5 @@ opencv-python==4.2.0.34
 matplotlib==3.3.1
 tqdm
 numpy
+configargparse
 

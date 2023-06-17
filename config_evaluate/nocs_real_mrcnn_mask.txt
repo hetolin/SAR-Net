@@ -11,5 +11,5 @@ GCN3D_isNeed=True
 pcd_isSave=False
 
 output_pcd_folder = './results/NOCS/output_pcds'
-SARNet_model_path='./checkpoints/NOCS/pretrained/000099.model'
+SARNet_model_path='./checkpoints/NOCS/pretrained/sarnet/000099.model'
 GCN3D_model_path='./checkpoints/NOCS/pretrained/seg3d/20210530_5.pth'

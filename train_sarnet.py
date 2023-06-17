@@ -19,6 +19,7 @@ import os
 from net_respo.net_sarnet import Loss_Func
 from rich.progress import Progress, TextColumn, BarColumn, TimeElapsedColumn, TimeRemainingColumn, SpinnerColumn
 from config.config_sarnet import args
+import torch
 
 def optimizer_zero_grad(optimizer):
     optimizer.module.zero_grad() if args.is_parallel else optimizer.zero_grad()
@@ -80,7 +81,7 @@ def train_model(args):
         current_set_lr, current_get_lr = set_get_lr(scheduler_warmup, optimizer)
         # current_lr = scheduler_steplr.module.get_last_lr()[0] if args.is_parallel else scheduler_steplr.get_last_lr()[0]
         print('#########################################')
-        print('epoch: {:0>3d}, set lr: {:.6f}, get lr: {:.6f}'.format(epoch, current_set_lr, current_get_lr)) #torch 1.4
+        print('epoch: {:0>3d}, set lr: {:.10f}, get lr: {:.10f}'.format(epoch, current_set_lr, current_get_lr)) #torch 1.4
 
         # for idx, data in enumerate(tqdm(dataloader, ncols=80)):
         for idx, data in enumerate(dataloader):
