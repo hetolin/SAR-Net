@@ -29,19 +29,24 @@ pip install -r requirements.txt
 
 
 ## Prepare Dataset
-* Download [camera_train_processed](https://drive.google.com/file/d/1DzqX5OQIOo44viQepPXZfWUXmb1WLZhc/view?usp=share_link) that we have preprocessed.
-* Download [camera_val](http://download.cs.stanford.edu/orion/nocs/camera_val25K.zip),
- [real_test](http://download.cs.stanford.edu/orion/nocs/real_test.zip),
-[ground-truth annotations](http://download.cs.stanford.edu/orion/nocs/gts.zip)
-provided by [NOCS](https://github.com/hughw19/NOCS_CVPR2019).
-* Download [segmentation results](https://drive.google.com/file/d/1RwAbFWw2ITX9mXzLUEBjPy_g-MNdyHET/view) 
-provided by [DualPoseNet](https://github.com/Gorilla-Lab-SCUT/DualPoseNet). 
+* Download [[camera_train_processed](https://drive.google.com/file/d/1DzqX5OQIOo44viQepPXZfWUXmb1WLZhc/view?usp=share_link)]
+  that we have preprocessed.
+* Download [[CAMERA/val](http://download.cs.stanford.edu/orion/nocs/camera_val25K.zip)],
+  [[Real/test](http://download.cs.stanford.edu/orion/nocs/real_test.zip)],
+  [[gts](http://download.cs.stanford.edu/orion/nocs/gts.zip)], 
+  [[obj_models](http://download.cs.stanford.edu/orion/nocs/obj_models.zip)] and 
+  [[nocs_results](https://drive.google.com/file/d/1p72NdY4Bie_sra9U8zoUNI4fTrQZdbnc/view?usp=sharing)]
+  provided by [NOCS](https://github.com/hughw19/NOCS_CVPR2019).
+* Download [[mrcnn_mask_results](https://drive.google.com/file/d/1RwAbFWw2ITX9mXzLUEBjPy_g-MNdyHET/view)] provided by 
+  [DualPoseNet](https://github.com/Gorilla-Lab-SCUT/DualPoseNet).
 
 
 Unzip and organize these files in `./data/NOCS` and `./results/NOCS` as follows:
 ```
 data
 └── NOCS
+    ├── camera_train_processed
+    ├── template_FPS
     ├── CAMERA
     │   ├── val 
     │   └── val_list.txt
@@ -51,17 +56,25 @@ data
     ├── gts
     │   ├── cam_val
     │   └── real_test
-    ├── camera_train_processed
-    └── template_FPS
+    └── obj_models
+        ├── val
+        └── real_test
+   
 
 results
 └── NOCS
-    └── mrcnn_mask_results
-        ├── cam_val
+    ├── mrcnn_mask_results
+    │   ├── cam_val
+    │   └── real_test
+    └── nocs_results
+        ├── val
         └── real_test
+        
 ```
 
 ```
+python preprocess/shape_data.py
+python preprocess/pose_data.py
 python generate_json.py
 ```
 
@@ -76,7 +89,7 @@ Also thanks [Peng et al.](https://github.com/swords123/SSC-6D/blob/bb0dcd5e5b789
 ```
 modified the ${gpu_id} in config_sarnet.py
 
-# using single GPU (recommend)
+# using single GPU
 e.g. gpu_id = '0' 
 
 # using multiple GPUs
