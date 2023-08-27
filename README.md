@@ -3,8 +3,6 @@
 ![architecture](assets/architecture.png)
 
 ## 📝 Overview
-
----
 This repository contains the PyTorch implementation of the paper "SAR-Net: Shape Alignment and Recovery Network for Category-level 6D Object Pose and Size Estimation"
 [[PDF](https://openaccess.thecvf.com/content/CVPR2022/papers/Lin_SAR-Net_Shape_Alignment_and_Recovery_Network_for_Category-Level_6D_Object_CVPR_2022_paper.pdf)]
 [[Supp](https://openaccess.thecvf.com/content/CVPR2022/supplemental/Lin_SAR-Net_Shape_Alignment_CVPR_2022_supplemental.zip)]
@@ -14,8 +12,6 @@ Our approach could recover the 6-DoF pose and 3D size of category-level objects 
 For more results and robotic demos, please refer to our [Webpage](https://hetolin.github.io/SAR-Net/).
 
 ## 💫 Follow-up works
-
----
 - **Our follow-up ICCV2023 work**:
   - PourIt!🫗: Weakly-supervised Liquid Perception from a Single Image for Visual Closed-Loop Robotic Pouring [[Project Page](http://hetolin.github.io/PourIt)] [[PDF](https://arxiv.org/pdf/2307.11299.pdf)] [[arXiv](https://arxiv.org/pdf/2307.11299.pdf)] [[Supp]()]
 
@@ -24,8 +20,6 @@ For more results and robotic demos, please refer to our [Webpage](https://hetoli
 
 
 ## 📚 Dependencies
-
----
 * Python >= 3.6
 * PyTorch >= 1.4.0
 * CUDA >= 10.1
@@ -90,7 +84,6 @@ python generate_json.py
 ```
 
 ## 🌟 NOTE
-
 **NOTE** that there is a small bug in the original evaluation [code](https://github.com/hughw19/NOCS_CVPR2019/blob/78a31c2026a954add1a2711286ff45ce1603b8ab/utils.py#L252) of NOCS w.r.t. IOU.
 We fixed this bug in our evaluation [code](https://github.com/hetolin/SAR-Net/blob/bb208a5727089c9c9d0b0bd46bbbd1de3198df05/lib/utils_pose.py#L254) and re-evaluated our method.
 Also thanks [Peng et al.](https://github.com/swords123/SSC-6D/blob/bb0dcd5e5b789ea2a80c6c3fa16ccc2bf0a445d1/eval/utils.py#L114) for further confirming this bug.
