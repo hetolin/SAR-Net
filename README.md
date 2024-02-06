@@ -1,5 +1,15 @@
 # SAR-Net: Shape Alignment and Recovery Network for Category-level 6D Object Pose and Size Estimation
 
+
+
+<table>
+  <tr>
+    <td><img src="examples/0000_image.png" alt="Image 1"></td>
+    <td><img src="examples/0000_depth_color.png" alt="Image 2"></td>
+    <td><img src="examples/d435_0000_pred.png" alt="Image 3"></td>
+  </tr>
+</table>
+
 ![architecture](assets/architecture.png)
 
 ## 📝 Overview
@@ -13,7 +23,7 @@ For more results and robotic demos, please refer to our [Webpage](https://hetoli
 
 ## 💫 Follow-up works
 - **Our follow-up ICCV2023 work**:
-  - PourIt!🫗: Weakly-supervised Liquid Perception from a Single Image for Visual Closed-Loop Robotic Pouring [[Project Page](http://hetolin.github.io/PourIt)] [[PDF](https://arxiv.org/pdf/2307.11299.pdf)] [[arXiv](https://arxiv.org/pdf/2307.11299.pdf)] [[Supp]()]
+  - PourIt!🫗: Weakly-supervised Liquid Perception from a Single Image for Visual Closed-Loop Robotic Pouring [[Project Page](http://hetolin.github.io/PourIt)] [[PDF](https://arxiv.org/pdf/2307.11299.pdf)] [[arXiv](https://arxiv.org/pdf/2307.11299.pdf)] [[Supp](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Lin_PourIt_Weakly-Supervised_Liquid_ICCV_2023_supplemental.zip)]
 
 [//]: # (<img src="./assets/architecture.png" alt="图片替换文本" height="18" />)
 
@@ -88,6 +98,18 @@ python generate_json.py
 We fixed this bug in our evaluation [code](https://github.com/hetolin/SAR-Net/blob/bb208a5727089c9c9d0b0bd46bbbd1de3198df05/lib/utils_pose.py#L254) and re-evaluated our method.
 Also thanks [Peng et al.](https://github.com/swords123/SSC-6D/blob/bb0dcd5e5b789ea2a80c6c3fa16ccc2bf0a445d1/eval/utils.py#L114) for further confirming this bug.
 
+## 🪄 Demo
+```
+python demo.py --config ./config_evaluate/nocs_real_mrcnn_mask.txt
+```
+The predict results will be saved in the folder of `./examples`
+<table>
+  <tr>
+    <td><img src="examples/0000_image.png" alt="Image 1"></td>
+    <td><img src="examples/0000_depth_color.png" alt="Image 2"></td>
+    <td><img src="examples/d435_0000_pred.png" alt="Image 3"></td>
+  </tr>
+</table>
 
 ## ⏳ Training
 ```
@@ -111,6 +133,9 @@ python evaluate.py --config ./config_evaluate/nocs_real_mrcnn_mask.txt
 We also provide the [results](https://drive.google.com/drive/folders/1dzfvO-HePuOpS6FlCTO0pn1nhTFTmlmW?usp=sharing) 
 reported in our paper for comparison.
  
+
+
+
 ## 🔖 Citation
 If you find our work helpful, please consider citing:
 ```
