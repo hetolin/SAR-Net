@@ -888,6 +888,11 @@ def draw_detections(img, out_dir, data_name, img_id, intrinsics, pred_sRT, pred_
             bbox_3d = get_3d_bbox(gt_size[i, :], 0)
             transformed_bbox_3d = transform_coordinates_3d(bbox_3d, sRT)
             projected_bbox = calculate_2d_projections(transformed_bbox_3d, intrinsics)
+
+            xyz_axis = 0.1 * np.array([[0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]]).transpose()
+            transformed_axes = transform_coordinates_3d(xyz_axis, sRT)
+            projected_axes = calculate_2d_projections(transformed_axes, intrinsics)
+
             img = draw(img, projected_bbox, projected_axes, (255, 0, 0))
     # darw prediction - RED color
     for i in range(pred_sRT.shape[0]):
@@ -898,7 +903,12 @@ def draw_detections(img, out_dir, data_name, img_id, intrinsics, pred_sRT, pred_
         bbox_3d = get_3d_bbox(pred_size[i, :], 0)
         transformed_bbox_3d = transform_coordinates_3d(bbox_3d, sRT)
         projected_bbox = calculate_2d_projections(transformed_bbox_3d, intrinsics)
-        img = draw(img, projected_bbox, projected_axes, (255, 0, 0))
+
+        xyz_axis = 0.1 * np.array([[0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]]).transpose()
+        transformed_axes = transform_coordinates_3d(xyz_axis, sRT)
+        projected_axes = calculate_2d_projections(transformed_axes, intrinsics)
+
+        img = draw(img, projected_bbox, projected_axes, (255, 255, 0))
 
     cv2.imwrite(out_path, img)
     # cv2.imshow('vis', img)

@@ -14,6 +14,7 @@
 import os
 import json
 import random
+from config.config_sarnet import args
 
 def read_json_file(file_path):
     with open(file_path, 'r') as stream:
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     category_list = os.listdir(data_path)
     train_list = {}
 
-    categories = ['bottle', 'bowl', 'camera', 'can', 'laptop', 'mug']
+    categories = args.categories #['bottle', 'bowl', 'camera', 'can', 'laptop', 'mug']
 
     data = []
     instance_num=0
